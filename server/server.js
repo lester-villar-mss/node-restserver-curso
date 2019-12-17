@@ -1,14 +1,14 @@
-require('./config/config');
+import './config/config.js';
 
-const express = require('express');
+import express from 'express';
 const app = express();
-const bodyParser = require('body-parser');
+import { urlencoded, json } from 'body-parser';
 
 // parse application/x-www-form-urlencoded
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(urlencoded({ extended: false }));
 
 // parse application/json
-app.use(bodyParser.json());
+app.use(json());
 
 app.get('/usuario', function(req, res) {
     res.json('get usuario');
@@ -30,8 +30,6 @@ app.post('/usuario', function(req, res) {
             persona: body
         });
     }
-
-
 });
 
 app.put('/usuario/:id', function(req, res) {
@@ -48,7 +46,5 @@ app.delete('/usuario', function(req, res) {
 })
 
 app.listen(3000, () => {
-
     console.log('Escuchando el puerto', process.env.PORT);
-
 });
