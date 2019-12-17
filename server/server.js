@@ -1,14 +1,13 @@
-import './config/config.js';
-
-import express from 'express';
+require('./config/config.js');
+const express = require('express');
 const app = express();
-import { urlencoded, json } from 'body-parser';
+const bodyParser = require('body-parser');
 
 // parse application/x-www-form-urlencoded
-app.use(urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({ extended: false }));
 
 // parse application/json
-app.use(json());
+app.use(bodyParser.json());
 
 app.get('/usuario', function(req, res) {
     res.json('get usuario');
